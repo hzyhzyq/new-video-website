@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface DemoDao {
-    public Long query(@Param("id") Long id);
+    Long query(@Param("id") Long id);
 }
