@@ -23,9 +23,7 @@ public class LoginRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        /*ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        String token = attributes.getRequest().getHeader("token");
-        TokenUtil.checkToken(token);*/
+        Object principal = authenticationToken.getPrincipal();
         return new SimpleAuthenticationInfo("123","123",this.getName());
     }
 }
