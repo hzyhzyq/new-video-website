@@ -3,20 +3,11 @@ package com.yunqi.video.config.shiroConfig;
 import com.alibaba.fastjson.JSONObject;
 import com.yunqi.video.domain.constant.ErrorInfo;
 import com.yunqi.video.domain.response.JsonResponse;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.filter.authc.UserFilter;
-import org.apache.shiro.web.filter.authz.AuthorizationFilter;
-import org.apache.shiro.web.util.WebUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 public class MyFilter extends UserFilter {
