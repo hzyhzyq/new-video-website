@@ -11,8 +11,9 @@ public enum ErrorInfo {
      */
     SUCCESS("成功","200"),
     COMMON_ERROR("服务器异常","500"),
-    LOGGIN_ERROR("账号或密码错误","501"),
-    TOKEN_EXPIRED("未登录","502");
+    LOGIN_ERROR("账号或密码错误","501"),
+    TOKEN_EXPIRED("未登录","502"),
+    PARAM_ERROR("参数异常","504");
 
 
     private final String errorMessage;

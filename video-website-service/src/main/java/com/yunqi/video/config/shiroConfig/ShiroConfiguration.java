@@ -1,19 +1,18 @@
 package com.yunqi.video.config.shiroConfig;
 
 
-import org.apache.shiro.mgt.SessionStorageEvaluator;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.mgt.DefaultWebSessionStorageEvaluator;
 import org.apache.shiro.web.servlet.SimpleCookie;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.Filter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 /**
@@ -41,8 +40,8 @@ public class ShiroConfiguration {
     public CookieRememberMeManager rememberMeManager() {
         CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
         cookieRememberMeManager.setCookie(rememberMeCookie());
-        // rememberMe cookie加密的密钥
-        cookieRememberMeManager.setCipherKey("ZHANGXIAOHEI_CAT".getBytes());
+        // rememberMe cookie加密的密钥 随机生产
+        cookieRememberMeManager.setCipherKey("mKB6cMXXoXQy0Qse".getBytes());
         return cookieRememberMeManager;
     }
     /**
@@ -76,6 +75,9 @@ public class ShiroConfiguration {
         Map<String,String> map = new HashMap<>(10);
         map.put("/user/login","anon");
         map.put("/user/logout", "anon");
+        map.put("/comment/get_comment", "anon");
+        map.put("/video/get_recommend_video", "anon");
+        map.put("/video/get_video", "anon");
         map.put("/**","auth");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         LinkedHashMap<String, Filter> filterMaps = new LinkedHashMap<String, Filter>();

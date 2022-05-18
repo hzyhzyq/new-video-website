@@ -11,8 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserInfo {
     private int id;
-    private int uid;
-    private String name;
+    private String nickName;
     private String profilePicture;
     private Date createDate;
     private Date updateDate;

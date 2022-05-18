@@ -25,6 +25,7 @@ public class JsonResponse<T> {
     public JsonResponse(ErrorInfo errorInfo) {
         this.code = errorInfo.getErrorCode();
         this.message = errorInfo.getErrorMessage();
+        this.data = (T) "error";
     }
 
     public JsonResponse(String code,String message) {

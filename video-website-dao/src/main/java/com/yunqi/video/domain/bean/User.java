@@ -1,16 +1,16 @@
 package com.yunqi.video.domain.bean;
 
-import lombok.*;
-
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private int id;
-    private String email;
-    private String password;
-    private Date createDate;
-    private Date updateDate;
+    private String id;
+    private String loginName;
+    private String userEmail;
+    private String userPassword;
+    private String userAvatar;
 }
