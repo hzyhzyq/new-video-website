@@ -53,4 +53,8 @@ public class CommentServiceImpl implements CommentService {
     public Comment getCommentById(String commentId) {
         return commentDao.getCommentById(commentId);
     }
+    @Override
+    public List<Comment> getAllComments(String videoId) {
+        return commentDao.getAllComment(videoId);
+    }
 }

@@ -5,6 +5,7 @@ import com.yunqi.video.provider.CommentGetProvider;
 import com.yunqi.video.provider.CommentProvider;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Mapper
@@ -25,5 +26,6 @@ public interface CommentDao {
     @Select("SELECT * FROM comment WHERE comment_id = #{commentId}")
     Comment getCommentById(String commentId);
 
-
+    @Select("SELECT * FROM comment WHERE video_id = #{videoId} ORDER BY create_time")
+    List<Comment> getAllComment(String videoId);
 }

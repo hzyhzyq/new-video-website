@@ -1,5 +1,7 @@
 package com.yunqi.video.api;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.yunqi.video.domain.bean.Comment;
 import com.yunqi.video.domain.bean.Reply;
 import com.yunqi.video.domain.bean.User;
@@ -29,7 +31,7 @@ public class CommentController {
     private UserService userService;
 
     @GetMapping("/get_comment")
-    public JsonResponse<BulletChattingList> upload(@RequestParam("videoId") String videoId){
+    public JsonResponse<BulletChattingList> getComment(@RequestParam("videoId") String videoId){
         BulletChattingList chattingList = new BulletChattingList();
         List<Comment> comments = commentService.getComments(videoId);
         Iterator<Comment> iterator = comments.iterator();
@@ -64,5 +66,13 @@ public class CommentController {
         comment.setInBox(inBox);
         String id = commentService.upload(comment);
         return new JsonResponse<>(id);
+    }
+    @GetMapping("/get_all_comment")
+    public JsonResponse<List<Comment>> getAllComment(@RequestParam("videoId") String videoId,@RequestParam("page") Integer page){
+        Page<Reply> helper = PageHelper.startPage(page, 5);
+        List<Comment> comments = commentService.getAllComments(videoId);
+        JsonResponse<List<Comment>> response = new JsonResponse<>(comments);
+        response.setMessage(helper.getTotal()+"");
+        return response;
     }
 }

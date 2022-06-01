@@ -77,6 +77,7 @@ public class ShiroConfiguration {
         map.put("/user/logout", "anon");
         map.put("/comment/get_comment", "anon");
         map.put("/video/get_recommend_video", "anon");
+        map.put("/video/get_all_video", "anon");
         map.put("/video/get_video", "anon");
         map.put("/**","auth");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);

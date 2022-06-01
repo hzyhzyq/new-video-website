@@ -84,4 +84,7 @@ public class VideoServerImpl implements VideoServer {
     public void upload(Video video){
         videoDao.insertVideo(video);
     }
+
+    @Override
+    public List<Video> getAllVideo(String type){ return videoDao.getAllVideo(type);}
 }

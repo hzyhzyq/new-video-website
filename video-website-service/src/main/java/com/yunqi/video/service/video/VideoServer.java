@@ -15,6 +15,8 @@ public interface VideoServer {
 
     List<Video> getRecommendVideo(String type);
 
+    List<Video> getAllVideo(String type);
+
     void remove(String url);
 
     void upload(Video video);

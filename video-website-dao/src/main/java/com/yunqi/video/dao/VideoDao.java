@@ -27,4 +27,9 @@ public interface VideoDao {
             "ORDER BY RAND()\n" +
             "LIMIT 8")
     List<Video> getRecommendVideoWithType(String videoType);
+
+    @Select("SELECT * FROM video\n" +
+            "WHERE video_type=#{videoType}\n" +
+            "ORDER BY id DESC\n")
+    List<Video> getAllVideo(String videoType);
 }

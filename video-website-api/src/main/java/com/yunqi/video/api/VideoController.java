@@ -1,6 +1,9 @@
 package com.yunqi.video.api;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.mysql.cj.util.StringUtils;
+import com.yunqi.video.domain.bean.Reply;
 import com.yunqi.video.domain.bean.User;
 import com.yunqi.video.domain.bean.Video;
 import com.yunqi.video.domain.constant.ErrorInfo;
@@ -98,5 +101,19 @@ public class VideoController {
             next.setPictureUrl(StringUtil.changeToPictureUrl(pictureUrl));
         }
         return new JsonResponse<>(recommendVideo);
+    }
+    @GetMapping("/get_all_video")
+    public JsonResponse<List<Video>> getAllVideo(@RequestParam(value = "type") String type,@RequestParam("page") Integer page) {
+        Page<Reply> helper = PageHelper.startPage(page, 12);
+        List<Video> video = videoServerImpl.getAllVideo(type);
+        for (Video v: video) {
+            String videoUrl = v.getVideoUrl();
+            String pictureUrl = v.getPictureUrl();
+            v.setVideoUrl(StringUtil.changeToUrl(videoUrl) + "/index.m3u8");
+            v.setPictureUrl(StringUtil.changeToPictureUrl(pictureUrl));
+        }
+        JsonResponse<List<Video>> listJsonResponse = new JsonResponse<>(video);
+        listJsonResponse.setMessage(helper.getTotal()+"");
+        return listJsonResponse;
     }
 }

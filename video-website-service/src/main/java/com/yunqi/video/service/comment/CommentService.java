@@ -8,4 +8,5 @@ public interface CommentService {
     String upload(Comment comment);
     List<Comment> getComments(String videoId);
     Comment getCommentById(String commentId);
+    List<Comment> getAllComments(String videoId);
 }

@@ -5,7 +5,7 @@ public class CommentGetProvider {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("SELECT comment_id,progress,content,user_id,user_name,video_id,in_box,create_time ");
         stringBuilder.append("FROM COMMENT ");
-        stringBuilder.append("WHERE video_id = #{videoId} ");
+        stringBuilder.append("WHERE video_id = #{videoId} AND in_box = 1 ");
         stringBuilder.append("ORDER BY rand() ");
         stringBuilder.append("LIMIT "+ limit);
         return stringBuilder.toString();
