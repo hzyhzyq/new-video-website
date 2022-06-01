@@ -79,6 +79,7 @@ public class ShiroConfiguration {
         map.put("/video/get_recommend_video", "anon");
         map.put("/video/get_all_video", "anon");
         map.put("/video/get_video", "anon");
+        map.put("/comment/get_all_comment", "anon");
         map.put("/**","auth");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         LinkedHashMap<String, Filter> filterMaps = new LinkedHashMap<String, Filter>();
